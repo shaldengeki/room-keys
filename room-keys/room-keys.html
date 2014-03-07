@@ -1,0 +1,68 @@
+<head>
+  <meta charset="utf-8">
+  <title>ACen Room Keys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class='container-fluid'>
+    <div class='page-header'>
+      <h1>ACen Room Keys</h1>
+    </div>
+    <div class='row-fluid'>
+      {{> key_list}}
+      {{> key_menu}}
+    </div>
+  </div>
+</body>
+
+<template name="key_list">
+  <div class='span9'>
+  {{# if keys}}
+    <ul id="key_list">
+    {{# each keys}}
+      {{> key_info}}
+    {{/each}}
+    </ul>
+  {{else}}
+  No keys yet.
+  {{/if}}
+  </div>
+</template>
+
+<template name="key_info">
+  <li class="{{maybe_selected}}">
+    {{person}}: {{updated_string}}
+  </li>
+</template>
+
+<template name="key_menu">
+  <div id="key_menu" class='span3'>
+    {{> add_key_menu}}
+    {{> selected_key_menu}}
+  </div>
+</template>
+
+<template name="add_key_menu">
+  <div id="add_key_menu" class="{{hidden_if_key_selected}}">
+    <form id="add_key_form">
+      <fieldset>
+        <label>Person</label>
+        <input type="text" name="person" placeholder="Person's name" />
+        <button type="submit" class="btn">Add Key</button>
+      </fieldset>
+    </form>
+  </div>
+</template>
+
+<template name="selected_key_menu">
+  <div id="selected_key_menu" class="{{showing_if_key_selected}}">
+    <form id="update_key_form">
+      <fieldset>
+        <input type="hidden" name="id" value="{{key_id}}" />
+        <label>Person</label>
+        <input type="text" name="person" value="{{key_person}}" />
+        <button type="submit" class="btn">Update Key</button><!--&nbsp;<button id="delete">Delete Key</button>-->
+      </fieldset>
+    </form>
+  </div>
+</template>

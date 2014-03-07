@@ -1,0 +1,16 @@
+/* CSS declarations go here */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#key_list li {
+  padding: 10px;
+}
+
+#key_list li.selected {
+  background-color: orange;
+}
+
+.hidden {
+  display: none;
+}
